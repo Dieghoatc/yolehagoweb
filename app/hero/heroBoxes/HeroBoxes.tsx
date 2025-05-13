@@ -6,28 +6,6 @@ import carpenter from "../../assets/jobservices/carpinteria.png";
 import locksmith from "../../assets/jobservices/lock.png";
 import plumber from "../../assets/jobservices/plomeria.png";
 
-const usersRequestList = [
-  {
-    id: 1,
-    nombre: "Carlos",
-    mensaje: "Solicito un carpintero para arreglos caseros",
-    image: carpenter,
-  },
-  {
-    id: 2,
-    nombre: "Alejandra",
-    mensaje:
-      "Busco un cerrajero para cambio de guardas de mi casa. Mi gato se ha quedado encerrado",
-    image: locksmith,
-  },
-  {
-    id: 3,
-    nombre: "Juan Pablo",
-    mensaje:
-      "Busco experto en plomería para arreglo de tuberías de agua en mi negocio.",
-    image: plumber,
-  },
-];
 
 export function HeroBoxes() {
   
