@@ -76,8 +76,8 @@ export function HeroBoxes() {
           <div>
             <h3 className="text-blue-700 font-semibold text-lg mb-1">Carlo</h3>
             <blockquote className="text-gray-600 text-sm italic">
-              "Solicito un carpintero para arreglos caseros"
-            </blockquote>
+            &quot;Solicito un carpintero para arreglos caseros&quot;
+            </blockquote> 
           </div>
         </div>
       </div>
@@ -93,7 +93,7 @@ export function HeroBoxes() {
           <div>
             <h3 className="text-blue-700 font-semibold text-lg mb-1">Alejandra</h3>
             <blockquote className="text-gray-600 text-sm italic">
-              "Busco un cerrajero para cambio de guardas de mi casa. Mi gato se ha quedado encerrado"
+            &quot;Busco un cerrajero para cambio de guardas de mi casa. Mi gato se ha quedado encerrado&quot;
             </blockquote>
           </div>
         </div>
@@ -110,7 +110,7 @@ export function HeroBoxes() {
           <div>
             <h3 className="text-blue-700 font-semibold text-lg mb-1">Juan Pablo</h3>
             <blockquote className="text-gray-600 text-sm italic">
-              "Busco experto en plomería para arreglo de tuberías de agua en mi negocio."
+              &quot;Busco experto en plomería para arreglo de tuberías de agua en mi negocio.&quot;
             </blockquote>
           </div>
         </div>
