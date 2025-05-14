@@ -12,13 +12,13 @@ import {
 interface TaskCardProps {
   title: string;
   description: string;
-  price: number;
-  //createdAt: Date
+  price: string;
+  onClick: () => void;
 }
 
-export function TaskCard({ title, description, price }: TaskCardProps) {
+export function TaskCard({ title, description, price, onClick }: TaskCardProps) {
   return (
-    <Card className="w-full max-w-md">
+    <Card className="w-full max-w-md mb-2" onClick={onClick}>
       <CardHeader>
         <div className="grid grid-cols-3">
           <div className="col-span-2">
