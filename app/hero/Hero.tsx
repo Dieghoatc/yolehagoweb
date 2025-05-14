@@ -2,8 +2,13 @@ import { Header } from "../header/Header";
 import { Flex, Button, Grid } from "@radix-ui/themes";
 import brush from "@/app/assets/brush2.png";
 import { HeroBoxes } from "./heroBoxes/HeroBoxes";
+import { useRouter } from "next/navigation";
+
 
 export function Hero() {
+
+  const router = useRouter()
+
   return (
     <section className="">
       <Header />
@@ -26,10 +31,10 @@ export function Hero() {
               </div>
               <div className="mt-4">
                 <Flex className="md:flex-row flex-col" gap="3" align="center">
-                  <Button size="3" variant="soft">
+                  <Button size="3" variant="soft" onClick={() => router.push("/create-task")}>
                     Publica tu tarea
                   </Button>
-                  <Button size="3" variant="solid">
+                  <Button size="3" variant="solid" >
                     Gana dinero como trabajador
                   </Button>
                 </Flex>
