@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { HamburgerMenuIcon, Cross1Icon } from "@radix-ui/react-icons";
+import { XIcon, AlignRightIcon } from 'lucide-react';
 
 export function MobileNavbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,7 +15,7 @@ export function MobileNavbar() {
         onClick={toggleMenu}
         aria-label="Toggle Menu"
       >
-        {isOpen ? <Cross1Icon /> : <HamburgerMenuIcon />}
+        {isOpen ? <XIcon /> : <AlignRightIcon />}
       </button>
 
       <ul className="hidden lg:flex space-x-6 text-gray-700 font-medium">
