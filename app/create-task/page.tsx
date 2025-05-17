@@ -3,11 +3,15 @@
 import { useTaskCreationStore } from "./store";
 import { useState } from "react";
 import { HeaderTask } from "./components/HeaderTask";
-import { Steps } from "./components/steps/Steps"; 
+import { Steps } from "./components/steps/Steps";
+import { useRouter } from "next/navigation";
 
-const timeSlots = ["Mañana", "Medio día", "Tarde", "Noche"];
+const timeSlotList = ["Mañana", "Medio día", "Tarde", "Noche"];
+
+import { tasks } from "@/app/db/task";
 
 export default function CreateTask() {
+  const route = useRouter();
   const {
     currentStep,
     title,
@@ -16,6 +20,7 @@ export default function CreateTask() {
     location,
     description,
     price,
+    category,
     setCurrentStep,
     setTitle,
     setDate,
@@ -23,6 +28,7 @@ export default function CreateTask() {
     setLocation,
     setDescription,
     setPrice,
+    setCategory,
   } = useTaskCreationStore();
 
   const [showError, setShowError] = useState(false);
@@ -57,14 +63,77 @@ export default function CreateTask() {
   };
 
   const handleSubmit = () => {
-    console.log("Task submitted:", {
+    switch (timeSlot) {
+      case "Mañana":
+        setTimeSlot("morning");
+        break;
+      case "Medio día":
+        setTimeSlot("midday");
+        break;
+      case "Tarde":
+        setTimeSlot("afternoon");
+        break;
+      case "Noche":
+        setTimeSlot("night");
+        break;
+      default:
+        setTimeSlot("anytime");
+        break;
+    }
+
+    switch (category) {
+      case "Tecnología":
+        setCategory("tech");
+        break;
+      case "Salud":
+        setCategory("health");
+        break;
+      case "Belleza":
+        setCategory("beauty");
+        break;
+      case "Fitness":
+        setCategory("fitness");
+        break;
+      case "Educación":
+        setCategory("education");
+        break;
+      default:
+        setCategory("other");
+        break;
+    }
+
+    console.log(tasks);
+
+    const storedTasks = localStorage.getItem("tasks") || null;
+    const currentTasks = storedTasks ? JSON.parse(storedTasks) : [];
+
+    const newTask = {
+      id: (currentTasks.length + 1).toString(),
       title,
-      date,
-      timeSlot,
-      location,
       description,
-      price,
-    });
+      price: Number(price),
+      date,
+      timeSlot: timeSlot as
+        | "morning"
+        | "afternoon"
+        | "evening"
+        | "night"
+        | "midday"
+        | "anytime",
+      location,
+      status: "pending",
+      category: category as
+        | "tech"
+        | "health"
+        | "beauty"
+        | "fitness"
+        | "education"
+        | "other",
+    };
+
+    localStorage.setItem("tasks", JSON.stringify([...currentTasks, newTask]));
+
+    route.push("/dashboard");
   };
 
   return (
@@ -72,15 +141,14 @@ export default function CreateTask() {
       <HeaderTask />
       <main className="w-full md:max-w-4xl mx-auto px-4 py-8">
         <div className="grid grid-cols-1 gap-4">
-          <Steps currentStep={currentStep}  />
-          <div className="bg-white rounded-lg shadow-md p-6">    
-            
+          <Steps currentStep={currentStep} />
+          <div className="bg-white rounded-lg shadow-md p-6">
             {currentStep === 1 && (
               <div className="space-y-4">
-                <h3 className="text-2xl font-bold mb-6 text-blue-700">Empecemos con lo básico</h3>
-                <p>
-                  Escribe en pocas palabras lo que necesitas hacer
-                </p>
+                <h3 className="text-2xl font-bold mb-6 text-blue-700">
+                  Empecemos con lo básico
+                </h3>
+                <p>Escribe en pocas palabras lo que necesitas hacer</p>
                 <div>
                   <label className="text-md font-bold text-blue-600">
                     Titulo de la tarea
@@ -91,12 +159,25 @@ export default function CreateTask() {
                     onChange={(e) => setTitle(e.target.value)}
                     className="mt-3 h-10 w-full rounded-md border-gray-600 shadow-sm focus:ring-blue-500 focus:border-blue-500"
                   />
+                  <select
+                    value={category}
+                    onChange={(e) => setCategory(e.target.value)}
+                    className="mt-1 h-10 w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                  >
+                    <option value="">Selecciona una categoría</option>
+                    <option value="tech">Tecnología</option>
+                    <option value="health">Salud</option>
+                    <option value="beauty"> Belleza</option>
+                    <option value="fitness">Fitness</option>
+                    <option value="education">Educación</option>
+                    <option value="other">Otro</option>
+                  </select>
                 </div>
                 <div>
                   <label className="text-md font-bold text-blue-600">
                     Fecha
                   </label>
-                  <input                    
+                  <input
                     type="date"
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
@@ -113,7 +194,7 @@ export default function CreateTask() {
                     className="mt-1 h-10 w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                   >
                     <option value="">Selecciona una jornada</option>
-                    {timeSlots.map((slot) => (
+                    {timeSlotList.map((slot) => (
                       <option key={slot} value={slot}>
                         {slot}
                       </option>

@@ -8,6 +8,8 @@ interface TaskCreationState {
   location: string;
   description: string;
   price: string;
+  category: string;
+  
   setCurrentStep: (step: number) => void;
   setTitle: (title: string) => void;
   setDate: (date: string) => void;
@@ -15,6 +17,7 @@ interface TaskCreationState {
   setLocation: (location: string) => void;
   setDescription: (description: string) => void;
   setPrice: (price: string) => void;
+  setCategory: (category: string) => void;
   reset: () => void;
 }
 
@@ -26,6 +29,7 @@ export const useTaskCreationStore = create<TaskCreationState>((set) => ({
   location: '',
   description: '',
   price: '',
+  category: '',
   setCurrentStep: (step: number) => set({ currentStep: step }),
   setTitle: (title: string) => set({ title }),
   setDate: (date: string) => set({ date }),
@@ -33,6 +37,8 @@ export const useTaskCreationStore = create<TaskCreationState>((set) => ({
   setLocation: (location: string) => set({ location }),
   setDescription: (description: string) => set({ description }),
   setPrice: (price: string) => set({ price }),
+  setCategory: (category: string) => set({ category }),
+  
   reset: () => set({
     currentStep: 1,
     title: '',

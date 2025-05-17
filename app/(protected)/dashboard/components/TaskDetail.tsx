@@ -1,11 +1,10 @@
 interface TaskDetailProps {
   children: React.ReactNode;
-  onClick: () => void;
 }
 
-export function TaskDetail({ children, onClick }: TaskDetailProps) {
+export function TaskDetail({ children  }: TaskDetailProps) {
   return (
-    <div onClick={onClick}>
+    <div>
       {children}
     </div>
   );
