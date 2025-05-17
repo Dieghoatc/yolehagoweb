@@ -1,17 +1,28 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { TaskCard } from "./components/TaskCard";
 import { Button } from "@radix-ui/themes";
 import { TaskDetail } from "./components/TaskDetail";
 
 import { InterfaceTasks } from "@/app/db/task";
 
+import {
+  UserButton,
+} from '@clerk/nextjs'
+
 export default function Dashboard() {
   const [selectedTask, setSelectedTask] = useState<InterfaceTasks | null>(null);
+  const [tasks, setTasks] = useState<InterfaceTasks[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const data = localStorage.getItem("tasks")
-  const tasksDatabase = data ? JSON.parse(data) : [];
+  useEffect(() => {
+    const storedTasks = localStorage.getItem('tasks');
+    if (storedTasks) {
+      setTasks(JSON.parse(storedTasks));
+    }
+    setIsLoading(false);
+  }, []);
 
   return (
     <div className="container mx-auto py-8">
@@ -19,12 +30,15 @@ export default function Dashboard() {
         <h1 className="text-3xl font-bold">Tareas</h1>
         <Button>
           <a href="/create-task">Crear nueva tarea</a>
+          <UserButton />
         </Button>
       </div>
       <div className="grid grid-cols-3 gap-6">
         <div className="col-span-1">
-          {data ? (
-            tasksDatabase.map((task: InterfaceTasks) => (
+          {isLoading ? (
+            <p>Cargando tareas...</p>
+          ) : tasks.length > 0 ? (
+            tasks.map((task) => (
               <TaskCard
                 key={task.id}
                 title={task.title}
@@ -34,9 +48,7 @@ export default function Dashboard() {
               />
             ))
           ) : (
-            <>
-              <p>No hay tareas</p>
-            </>
+            <p>No hay tareas</p>
           )}
         </div>
         <div className="col-span-2 p-10">
