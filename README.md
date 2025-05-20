@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛠️ Yolehago
 
-## Getting Started
+**Repositorio:** [https://github.com/Dieghoatc/yolehagoweb](https://github.com/Dieghoatc/yolehagoweb)  
+**URL del proyecto:** [https://yolehagoweb.vercel.app/](https://yolehagoweb.vercel.app/)
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🌍 Descripción
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Yolehago** es una plataforma enfocada en el mercado laboral colombiano, que permite ofrecer y solicitar **servicios ocasionales** como:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- 🧱 Albañilería  
+- 🔐 Cerrajería  
+- 🚿 Plomería  
+- 🪚 Carpintería  
+- 🧹 Limpieza  
+- 🍽️ Lavado de platos  
+- 🏨 Hostelería  
+- ...y muchos más oficios técnicos.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+El propósito es **conectar personas que necesitan un servicio con quienes pueden ofrecerlo**, promoviendo así la generación de empleo local.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🎯 Objetivos
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Agrupar y visibilizar oficios técnicos en Colombia.
+- Facilitar la publicación y búsqueda de servicios ocasionales.
+- Brindar una plataforma accesible para conectar empleadores con trabajadores.
+- Contribuir a la economía informal generando nuevas oportunidades laborales.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🚀 Tecnologías utilizadas
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- ⚛️ **Next.js** – Framework React para construir aplicaciones web modernas.
+- 🎨 **Tailwind CSS** – Utilidad para estilos rápidos y responsivos.
+- 🧠 **Turso** – Base de datos edge basada en SQLite.
+- 🔐 **Clerk** – Gestión de usuarios y autenticación segura.
+- 🧪 **Vercel** – Plataforma de despliegue rápida y eficiente para el frontend.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 💡 Contexto
+
+Este proyecto ha sido desarrollado como parte de la **Hackatón de Midudev**, con el objetivo de presentar una solución útil, escalable y enfocada en necesidades reales del entorno laboral colombiano.
+
+---
+
+## 🛠️ En desarrollo...
+
+Actualmente el proyecto se encuentra en fase activa de desarrollo. Se están implementando funcionalidades como:
+
+- Publicación de tareas por parte de usuarios registrados.
+- Visualización de tareas por categoría y localización.
+- Aplicación a tareas por parte de trabajadores.
+- Panel de usuario (dashboard) para control de tareas publicadas o asignadas.
+- Sistema de autenticación y gestión de sesiones con Clerk.
+
+---
+
+## 📌 Cómo contribuir
+
+1. Haz un fork del repositorio.
+2. Crea una nueva rama con tu funcionalidad: `git checkout -b mi-feature`.
+3. Realiza tus cambios y haz commit: `git commit -m "Agrega mi nueva funcionalidad"`.
+4. Haz push a tu rama: `git push origin mi-feature`.
+5. Abre un Pull Request.
+
+---
+
+## 📄 Licencia
+
+Este proyecto está bajo la licencia MIT. Consulta el archivo `LICENSE` para más detalles.
+
+---
+
+> Hecho con 💙 para el talento colombiano y claro que por supuesto con ayuda de IA.
