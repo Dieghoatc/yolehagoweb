@@ -15,7 +15,6 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { Navbar } from "../components/navbar";
 import { useGetTask } from "../hooks/useGetTask";
-import { auth } from "@clerk/nextjs/server";
 import { useDashboardStore } from "../store/dashboard.store";
 
 const categoryNames: Record<string, string> = {
