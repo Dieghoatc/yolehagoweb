@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
 import { ClerkProvider } from "@clerk/nextjs";
+import { Theme } from "@radix-ui/themes";
 
 import "@fontsource-variable/plus-jakarta-sans";
 import "@radix-ui/themes/styles.css";
@@ -24,7 +25,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Yolehago",
-  description: "Aplicacion para encontrar a los mejores profesionales locales para tus necesidades y trabajos casuales",
+  description:
+    "Aplicacion para encontrar a los mejores profesionales locales para tus necesidades y trabajos casuales",
 };
 
 export default function RootLayout({
@@ -35,8 +37,10 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={`${plusJakartaSans.variable} ${geist.variable} ${geistMono.variable} antialiased`}>
-          {children}
+        <body
+          className={`${plusJakartaSans.variable} ${geist.variable} ${geistMono.variable} antialiased`}
+        >
+          <Theme accentColor="green" grayColor="sand" radius="large" scaling="95%">{children}</Theme>
         </body>
       </html>
     </ClerkProvider>
