@@ -3,7 +3,7 @@
 import { TaskDetail } from "./components/TaskDetail";
 import { TaskCard } from "./components/TaskCard";
 
-import { useGetTask } from "./hooks/useGetTask";
+import { useGetTask } from "../../../hooks/useGetTask";
 import { InterfaceTasks } from "@/app/interfaces/task.interface";
 import { useState } from "react";
 
@@ -28,10 +28,21 @@ import {
 } from "@/components/ui/card";
 import { Button, Badge, Separator } from "@radix-ui/themes";
 //import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useDashboardStore } from "../../../store/dashboard.store";
+import { useEffect } from "react";
 
-export function Dashboard() {
+interface DashboardProps {
+  userId: string;
+}
+
+export function Dashboard({ userId }: DashboardProps) {
   const { data } = useGetTask();
   const [selectedTask, setSelectedTask] = useState<InterfaceTasks | null>(null);
+  const { setUserIdStore } = useDashboardStore();
+
+  useEffect(() => {
+    setUserIdStore(userId);
+  }, [userId, setUserIdStore]);
 
   return (
     <div className="py-8 h-screen mx-10">
@@ -53,7 +64,11 @@ export function Dashboard() {
           {selectedTask && (
             <TaskDetail>
               <div className="mx-auto px-4 py-8 max-w-4xl">
-                <Button variant="ghost" onClick={() => setSelectedTask(null)} className="mb-6">
+                <Button
+                  variant="ghost"
+                  onClick={() => setSelectedTask(null)}
+                  className="mb-6"
+                >
                   &larr; Back to Tasks
                 </Button>
 
@@ -97,7 +112,6 @@ export function Dashboard() {
                   </CardHeader>
 
                   <CardContent className="space-y-6">
-                    {/* Date, Time, Location */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                       <div className="flex items-start gap-2">
                         <Calendar className="h-5 w-5 text-muted-foreground mt-0.5" />
@@ -136,7 +150,6 @@ export function Dashboard() {
 
                     <Separator />
 
-                    {/* Description */}
                     <div>
                       <div className="flex items-center gap-2 mb-2">
                         <FileText className="h-5 w-5 text-muted-foreground" />
@@ -149,7 +162,6 @@ export function Dashboard() {
 
                     <Separator />
 
-                    {/* Price and Category */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="flex items-start gap-2">
                         <DollarSign className="h-5 w-5 text-muted-foreground mt-0.5" />

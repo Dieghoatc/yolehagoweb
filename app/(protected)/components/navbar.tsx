@@ -20,7 +20,6 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
-
   const toggleMenu = () => setIsOpen(!isOpen);
 
   const navItems = [

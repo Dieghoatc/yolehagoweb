@@ -5,6 +5,7 @@ import { Navbar } from "../components/navbar";
 export default async function ProtectedPage() {
   const { userId } = await auth();
 
+
   if (!userId) {
     return <div>Sign in to view this page</div>;
   }
@@ -12,7 +13,7 @@ export default async function ProtectedPage() {
   return (
     <div>
       <Navbar />
-      <Dashboard />
+      <Dashboard userId={userId} />
     </div>
   );
 }

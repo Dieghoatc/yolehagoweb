@@ -5,6 +5,7 @@ import { useState } from "react";
 import { HeaderTask } from "./components/HeaderTask";
 import { Steps } from "./components/steps/Steps";
 import { useRouter } from "next/navigation";
+import { jobs } from "../data/jobs";
 
 const timeSlotList = ["Mañana", "Medio día", "Tarde", "Noche"];
 
@@ -147,12 +148,11 @@ export default function CreateTask() {
                     className="mt-1 h-10 w-full rounded-md border-gray-300 shadow-sm focus:border-emerald-500 focus:ring-emerald-500"
                   >
                     <option value="">Selecciona una categoría</option>
-                    <option value="tech">Tecnología</option>
-                    <option value="health">Salud</option>
-                    <option value="beauty"> Belleza</option>
-                    <option value="fitness">Fitness</option>
-                    <option value="education">Educación</option>
-                    <option value="other">Otro</option>
+                    {jobs.map((job) => (
+                      <option key={job} value={job}>
+                        {job}
+                      </option>
+                    ))}
                   </select>
                 </div>
                 <div>
