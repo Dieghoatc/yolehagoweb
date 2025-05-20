@@ -27,7 +27,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button, Badge, Separator } from "@radix-ui/themes";
-//import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useDashboardStore } from "../../../store/dashboard.store";
 import { useEffect } from "react";
 

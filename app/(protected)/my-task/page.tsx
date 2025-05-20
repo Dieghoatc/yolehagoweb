@@ -70,7 +70,6 @@ export default function TaskList() {
     return matchesSearch && matchesCategory && matchesStatus;
   });
 
-  // Formatear fecha
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString("es-ES", {
       day: "numeric",

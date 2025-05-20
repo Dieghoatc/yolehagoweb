@@ -36,7 +36,6 @@ export function TaskDetail({ userName, userId }: TaskDetailProps) {
     }
   }, []);
 
-  // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!task) return;

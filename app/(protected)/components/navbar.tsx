@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@radix-ui/themes";
-// import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Menu, X, Home, ListTodo, ListCheck, User } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";

@@ -7,9 +7,7 @@ import {
   CardHeader,
 } from "@/components/ui/card";
 import { Badge, Button } from "@radix-ui/themes";
-//import { Badge } from '@/components/ui/badge';
 import { Calendar, MapPin, Clock } from "lucide-react";
-// import { Button } from '@/components/ui/button';
 
 interface TaskCardProps {
   task: InterfaceTasks;
