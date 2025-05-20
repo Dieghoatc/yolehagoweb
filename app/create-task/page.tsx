@@ -8,10 +8,9 @@ import { useRouter } from "next/navigation";
 
 const timeSlotList = ["Mañana", "Medio día", "Tarde", "Noche"];
 
-import { tasks } from "@/app/db/task";
-
 export default function CreateTask() {
   const route = useRouter();
+
   const {
     currentStep,
     title,
@@ -102,38 +101,21 @@ export default function CreateTask() {
         break;
     }
 
-    console.log(tasks);
+    localStorage.setItem(
+      "task",
+      JSON.stringify({
+        title,
+        date,
+        timeSlot,
+        location,
+        description,
+        price,
+        category,
+        status: "pending",
+      })
+    );
 
-    const storedTasks = localStorage.getItem("tasks") || null;
-    const currentTasks = storedTasks ? JSON.parse(storedTasks) : [];
-
-    const newTask = {
-      id: (currentTasks.length + 1).toString(),
-      title,
-      description,
-      price: Number(price),
-      date,
-      timeSlot: timeSlot as
-        | "morning"
-        | "afternoon"
-        | "evening"
-        | "night"
-        | "midday"
-        | "anytime",
-      location,
-      status: "pending",
-      category: category as
-        | "tech"
-        | "health"
-        | "beauty"
-        | "fitness"
-        | "education"
-        | "other",
-    };
-
-    localStorage.setItem("tasks", JSON.stringify([...currentTasks, newTask]));
-
-    route.push("/dashboard");
+    route.push("/preview-task");
   };
 
   return (

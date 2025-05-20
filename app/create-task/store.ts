@@ -1,4 +1,4 @@
-import { create } from 'zustand';
+import { create } from "zustand";
 
 interface TaskCreationState {
   currentStep: number;
@@ -9,7 +9,8 @@ interface TaskCreationState {
   description: string;
   price: string;
   category: string;
-  
+  userIdStore: string;
+
   setCurrentStep: (step: number) => void;
   setTitle: (title: string) => void;
   setDate: (date: string) => void;
@@ -18,18 +19,22 @@ interface TaskCreationState {
   setDescription: (description: string) => void;
   setPrice: (price: string) => void;
   setCategory: (category: string) => void;
+  setUserIdStore: (userId: string) => void;
+
   reset: () => void;
 }
 
 export const useTaskCreationStore = create<TaskCreationState>((set) => ({
   currentStep: 1,
-  title: '',
-  date: '',
-  timeSlot: '',
-  location: '',
-  description: '',
-  price: '',
-  category: '',
+  title: "",
+  date: "",
+  timeSlot: "",
+  location: "",
+  description: "",
+  price: "",
+  category: "",
+  userIdStore: "",
+
   setCurrentStep: (step: number) => set({ currentStep: step }),
   setTitle: (title: string) => set({ title }),
   setDate: (date: string) => set({ date }),
@@ -38,14 +43,18 @@ export const useTaskCreationStore = create<TaskCreationState>((set) => ({
   setDescription: (description: string) => set({ description }),
   setPrice: (price: string) => set({ price }),
   setCategory: (category: string) => set({ category }),
-  
-  reset: () => set({
-    currentStep: 1,
-    title: '',
-    date: '',
-    timeSlot: '',
-    location: '',
-    description: '',
-    price: '',
-  }),
+  setUserIdStore: (userIdStore: string) => set({ userIdStore }),
+
+  reset: () =>
+    set({
+      currentStep: 1,
+      title: "",
+      date: "",
+      timeSlot: "",
+      location: "",
+      description: "",
+      price: "",
+      category: "",
+      userIdStore: "",
+    }),
 }));

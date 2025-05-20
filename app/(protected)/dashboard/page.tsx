@@ -1,73 +1,18 @@
-"use client";
+import { auth } from "@clerk/nextjs/server";
+import { Dashboard } from "./components/Dashboard/Dashboard";
+import { Navbar } from "../components/navbar";
 
-import { useState, useEffect } from "react";
-import { TaskCard } from "./components/TaskCard";
-import { Button } from "@radix-ui/themes";
-import { TaskDetail } from "./components/TaskDetail";
+export default async function ProtectedPage() {
+  const { userId } = await auth();
 
-import { InterfaceTasks } from "@/app/db/task";
-
-import {
-  UserButton,
-} from '@clerk/nextjs'
-
-export default function Dashboard() {
-  const [selectedTask, setSelectedTask] = useState<InterfaceTasks | null>(null);
-  const [tasks, setTasks] = useState<InterfaceTasks[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const storedTasks = localStorage.getItem('tasks');
-    if (storedTasks) {
-      setTasks(JSON.parse(storedTasks));
-    }
-    setIsLoading(false);
-  }, []);
+  if (!userId) {
+    return <div>Sign in to view this page</div>;
+  }
 
   return (
-    <div className="container mx-auto py-8">
-      <div className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-bold">Tareas</h1>
-        <Button>
-          <a href="/create-task">Crear nueva tarea</a>
-          <UserButton />
-        </Button>
-      </div>
-      <div className="grid grid-cols-3 gap-6">
-        <div className="col-span-1">
-          {isLoading ? (
-            <p>Cargando tareas...</p>
-          ) : tasks.length > 0 ? (
-            tasks.map((task) => (
-              <TaskCard
-                key={task.id}
-                title={task.title}
-                description={task.description}
-                price={task.price.toString()}
-                onClick={() => setSelectedTask(task)}
-              />
-            ))
-          ) : (
-            <p>No hay tareas</p>
-          )}
-        </div>
-        <div className="col-span-2 p-10">
-          <TaskDetail>
-            <span className="text-xl font-bold text-blue-600">
-              Detalles de la tarea
-            </span>
-            {selectedTask && (
-              <div className="flex flex-col gap-4 p-10">
-                <h2 className="text-2xl font-bold mx-auto">
-                  {selectedTask.title}
-                </h2>
-                <p className="">{selectedTask.description}</p>
-                <p className="">{selectedTask.price}</p>
-              </div>
-            )}
-          </TaskDetail>
-        </div>
-      </div>
+    <div>
+      <Navbar />
+      <Dashboard />
     </div>
   );
 }
