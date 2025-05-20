@@ -1,5 +1,7 @@
-"use client";
-
+"use client"
+import { ArrowLeft, Calendar, Check, MapPin, User } from "lucide-react"
+import { Button, Separator, Badge } from "@radix-ui/themes"
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { TursoDB } from "@/app/service/tursoDB";
@@ -21,7 +23,6 @@ interface Task {
 
 export function TaskDetail({ userName, userId }: TaskDetailProps) {
   const [task, setTask] = useState<Task | null>(null);
-  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -35,18 +36,18 @@ export function TaskDetail({ userName, userId }: TaskDetailProps) {
     }
   }, []);
 
-  const handleSubmit = async () => {
+  // Handle form submission
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
     if (!task) return;
 
     const { title, description, price, category, location, date, timeSlot } = task;
 
-    // Validación básica
     if (!title || !category || !date || !timeSlot || !location || !description || !price) {
       alert("Todos los campos son obligatorios.");
       return;
     }
 
-    setLoading(true);
     try {
       const tursoDB = TursoDB();
 
@@ -74,8 +75,6 @@ export function TaskDetail({ userName, userId }: TaskDetailProps) {
     } catch (error) {
       console.error("Error al guardar la tarea:", error);
       alert("Ocurrió un error al guardar la tarea.");
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -86,26 +85,77 @@ export function TaskDetail({ userName, userId }: TaskDetailProps) {
   const { title, description, price, category, location, date, timeSlot } = task;
 
   return (
-    <div className="p-4">
-      <div className="flex flex-col gap-2">
-        <h1 className="text-xl font-bold">{title}</h1>
-        <span><strong>User:</strong> {userName}</span>
-        <span><strong>ID:</strong> {userId}</span>
-        <span><strong>Descripción:</strong> {description}</span>
-        <span><strong>Precio:</strong> {price}</span>
-        <span><strong>Categoría:</strong> {category}</span>
-        <span><strong>Lugar:</strong> {location}</span>
-        <span><strong>Fecha:</strong> {date}</span>
-        <span><strong>Franja Horaria:</strong> {timeSlot}</span>
-      </div>
+    <Card className="w-full max-w-2xl mx-auto">
+      <CardHeader className="bg-muted/30">
+        <CardTitle className="text-xl flex items-center gap-2">
+          <span className="text-primary">Previsualización de tarea</span>
+        </CardTitle>
+      </CardHeader>
+      <CardContent className="pt-6 space-y-4">
+        <div>
+          <h2 className="text-2xl font-bold">{title}</h2>
+          <Badge variant="outline" className="mt-2">
+            {category === "other" ? "Otra categoría" : category}
+          </Badge>
+        </div>
 
-      <button
-        onClick={handleSubmit}
-        disabled={loading}
-        className={`mt-4 px-4 py-2 rounded-md text-white ${loading ? 'bg-gray-400' : 'bg-green-600 hover:bg-green-700'}`}
-      >
-        {loading ? "Publicando..." : "Publicar tarea"}
-      </button>
-    </div>
+        <Separator />
+
+        <div className="space-y-2">
+          <div className="flex items-start gap-2">
+            <User className="h-5 w-5 text-muted-foreground shrink-0 mt-0.5" />
+            <div>
+              <p className="font-medium">{userName}</p>
+              <p className="text-sm text-muted-foreground">ID: {userId}</p>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-2">
+            <MapPin className="h-5 w-5 text-muted-foreground shrink-0 mt-0.5" />
+            <p>{location}</p>
+          </div>
+
+          <div className="flex items-start gap-2">
+            <Calendar className="h-5 w-5 text-muted-foreground shrink-0 mt-0.5" />
+            <div>
+              <p>
+                {new Date(date).toLocaleDateString("es-ES", {
+                  weekday: "long",
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </p>
+              <p className="text-sm text-muted-foreground">{timeSlot}</p>
+            </div>
+          </div>
+        </div>
+
+        <Separator />
+
+        <div>
+          <h3 className="font-medium mb-2">Descripción</h3>
+          <p className="text-muted-foreground">{description}</p>
+        </div>
+
+        <div>
+          <h3 className="font-medium mb-2">Precio</h3>
+          <p className="text-2xl font-bold">{Number(price).toLocaleString("es-CO", {
+            style: "currency",
+            currency: "COP",
+          })}</p>
+        </div>
+      </CardContent>
+      <CardFooter className="flex justify-between gap-4 pt-2 pb-4">
+        <Button variant="outline" onClick={() => router.push("/create-task")} className="w-full">
+          <ArrowLeft className="mr-2 h-4 w-4" />
+          Volver atrás
+        </Button>
+        <Button onClick={handleSubmit} className="w-full">
+          <Check className="mr-2 h-4 w-4" />
+          Guardar tarea
+        </Button>
+      </CardFooter>
+    </Card>
   );
 }

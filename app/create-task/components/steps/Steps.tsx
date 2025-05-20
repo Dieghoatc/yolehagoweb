@@ -17,32 +17,32 @@ export function Steps({ currentStep }: StepsProps) {
     <aside>
       <div className="mx-3 md:mx-0">
         <div className="flex gap-2 justify-between align-center w-full">
-          <StepItem color={currentStep >= 1 ? "blue" : "gray"}>
-            <CalendarDays color={currentStep >= 1 ? "blue" : "gray"} />
+          <StepItem color={currentStep >= 1 ? "emerald" : "gray"}>
+            <CalendarDays color={currentStep >= 1 ? "green" : "gray"} />
           </StepItem>
           <div
             className={`${
-              currentStep >= 2 ? "border-blue-400" : "border-gray-400"
+              currentStep >= 2 ? "border-emerald-700" : "border-gray-400"
             } border-t-1 w-full mt-[3px]`}
           ></div>
-          <StepItem color={currentStep >= 2 ? "blue" : "gray"}>
-            <MapPinPlusIcon color={currentStep >= 2 ? "blue" : "gray"} />
+          <StepItem color={currentStep >= 2 ? "emerald" : "gray"}>
+            <MapPinPlusIcon color={currentStep >= 2 ? "green" : "gray"} />
           </StepItem>
           <div
             className={`${
-              currentStep >= 3 ? "border-blue-400" : "border-gray-400"
+              currentStep >= 3 ? "border-emerald-700" : "border-gray-400"
             } border-t-1 w-full mt-[3px]`}
           ></div>
-          <StepItem color={currentStep >= 3 ? "blue" : "gray"}>
-            <ListCollapseIcon color={currentStep >= 3 ? "blue" : "gray"} />
+          <StepItem color={currentStep >= 3 ? "emerald" : "gray"}>
+            <ListCollapseIcon color={currentStep >= 3 ? "green" : "gray"} />
           </StepItem>
           <div
             className={`${
-              currentStep >= 4 ? "border-blue-400" : "border-gray-400"
+              currentStep >= 4 ? "border-emerald-700" : "border-gray-400"
             } border-t-1 w-full mt-[3px]`}
           ></div>
-          <StepItem color={currentStep >= 4 ? "blue" : "gray"}>
-            <BanknoteArrowUpIcon color={currentStep >= 4 ? "blue" : "gray"} />
+          <StepItem color={currentStep >= 4 ? "emerald" : "gray"}>
+            <BanknoteArrowUpIcon color={currentStep >= 4 ? "green" : "gray"} />
           </StepItem>
         </div>
         <div className="my-9 text-center">

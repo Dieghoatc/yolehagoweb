@@ -9,9 +9,6 @@ export default async function PreviewTask() {
     return <div>Sign in to view this page</div>;
   }
   return (
-    <div>
-      <h1>Preview Task</h1>
-      <TaskDetail userName={user.fullName} userId={userId} />
-    </div>
+    <TaskDetail userName={user.fullName} userId={userId} />
   );
 }

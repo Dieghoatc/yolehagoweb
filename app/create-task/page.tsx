@@ -127,24 +127,24 @@ export default function CreateTask() {
           <div className="bg-white rounded-lg shadow-md p-6">
             {currentStep === 1 && (
               <div className="space-y-4">
-                <h3 className="text-2xl font-bold mb-6 text-blue-700">
+                <h3 className="text-2xl font-bold mb-6 text-emerald-700">
                   Empecemos con lo básico
                 </h3>
                 <p>Escribe en pocas palabras lo que necesitas hacer</p>
                 <div>
-                  <label className="text-md font-bold text-blue-600">
+                  <label className="text-md font-bold text-emerald-600">
                     Titulo de la tarea
                   </label>
                   <input
                     type="text"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
-                    className="mt-3 h-10 w-full rounded-md border-gray-600 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                    className="mt-3 h-10 w-full rounded-md border-gray-600 shadow-sm focus:ring-emerald-500 focus:border-emerald-500"
                   />
                   <select
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
-                    className="mt-1 h-10 w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    className="mt-1 h-10 w-full rounded-md border-gray-300 shadow-sm focus:border-emerald-500 focus:ring-emerald-500"
                   >
                     <option value="">Selecciona una categoría</option>
                     <option value="tech">Tecnología</option>
@@ -156,24 +156,24 @@ export default function CreateTask() {
                   </select>
                 </div>
                 <div>
-                  <label className="text-md font-bold text-blue-600">
+                  <label className="text-md font-bold text-emerald-600">
                     Fecha
                   </label>
                   <input
                     type="date"
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
-                    className="mt-1 h-10 w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    className="mt-1 h-10 w-full rounded-md border-gray-300 shadow-sm focus:border-emerald-500 focus:ring-emerald-500"
                   />
                 </div>
                 <div>
-                  <label className="h-10 text-md font-bold text-blue-600">
+                  <label className="h-10 text-md font-bold text-emerald-600">
                     Jornada
                   </label>
                   <select
                     value={timeSlot}
                     onChange={(e) => setTimeSlot(e.target.value)}
-                    className="mt-1 h-10 w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    className="mt-1 h-10 w-full rounded-md border-gray-300 shadow-sm focus:border-emerald-500 focus:ring-emerald-500"
                   >
                     <option value="">Selecciona una jornada</option>
                     {timeSlotList.map((slot) => (
@@ -204,14 +204,14 @@ export default function CreateTask() {
             {currentStep === 2 && (
               <div className="space-y-4">
                 <div>
-                  <label className="text-md font-bold text-blue-600">
+                  <label className="text-md font-bold text-emerald-600">
                     Localización
                   </label>
                   <input
                     type="text"
                     value={location}
                     onChange={(e) => setLocation(e.target.value)}
-                    className="mt-1 h-10 w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    className="mt-1 h-10 w-full rounded-md border-gray-300 shadow-sm focus:border-emerald-500 focus:ring-emerald-500"
                   />
                 </div>
                 {showError && !location && (
@@ -225,13 +225,13 @@ export default function CreateTask() {
             {currentStep === 3 && (
               <div className="space-y-4">
                 <div>
-                  <label className="text-md font-bold text-blue-600">
+                  <label className="text-md font-bold text-emerald-600">
                     Descripción
                   </label>
                   <textarea
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
-                    className="mt-1 h-10 w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    className="mt-1 h-10 w-full rounded-md border-gray-300 shadow-sm focus:border-emerald-500 focus:ring-emerald-500"
                     rows={4}
                   ></textarea>
                 </div>
@@ -245,15 +245,15 @@ export default function CreateTask() {
 
             {currentStep === 4 && (
               <div className="space-y-4">
-                <div>
-                  <label className="text-md font-bold text-blue-600">
+                <div> 
+                  <label className="text-md font-bold text-emerald-600">
                     Precio
                   </label>
                   <input
                     type="number"
                     value={price}
                     onChange={(e) => setPrice(e.target.value)}
-                    className="mt-1 h-10 w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    className="mt-1 h-10 w-full rounded-md border-gray-300 shadow-sm focus:border-emerald-500 focus:ring-emerald-500"
                     placeholder="$"
                   />
                 </div>
@@ -277,14 +277,14 @@ export default function CreateTask() {
               {currentStep < 4 ? (
                 <button
                   onClick={handleNext}
-                  className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+                  className="px-4 py-2 bg-emerald-600 text-white rounded-md hover:bg-emerald-700"
                 >
                   Siguiente
                 </button>
               ) : (
                 <button
                   onClick={handleSubmit}
-                  className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
+                  className="px-4 py-2 bg-emerald-600 text-white rounded-md hover:bg-emerald-700"
                 >
                   Publicar tarea
                 </button>

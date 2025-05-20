@@ -44,14 +44,6 @@ export function Footer() {
                   Blog
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="#"
-                  className="text-muted-foreground hover:text-emerald-500"
-                >
-                  Prensa
-                </Link>
-              </li>
             </ul>
           </div>
           <div className="space-y-4">
