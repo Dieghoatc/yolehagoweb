@@ -66,7 +66,7 @@ export function TaskCard({ task }: TaskCardProps) {
       </CardContent>
       <CardFooter className="pt-2 border-t">
         <div className="flex justify-between items-center w-full">
-          <div className="font-semibold">{task.price}</div>
+          <div className="font-semibold">${formattedPrice}</div>
           <Button size="1">View Details</Button>
         </div>
       </CardFooter>
