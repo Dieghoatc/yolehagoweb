@@ -5,10 +5,10 @@ import { Navbar } from "./Navbar";
 
 import {
   SignInButton,
-  SignUpButton,
   SignedIn,
   SignedOut,
   UserButton,
+  RedirectToSignIn,
 } from "@clerk/nextjs";
 
 interface HeaderProps {
@@ -31,11 +31,11 @@ export function Header({ setMobileMenuOpen }: HeaderProps) {
                 Descargar App
               </Button>
               <SignedOut>
-                <SignInButton />
-                <SignUpButton />
+                <SignInButton>Iniciar Sesión</SignInButton>
               </SignedOut>
               <SignedIn>
                 <UserButton />
+                <RedirectToSignIn redirectUrl="/dashboard" />
               </SignedIn>
             </div>
             <div className="md:hidden">
