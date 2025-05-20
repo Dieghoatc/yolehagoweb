@@ -1,4 +1,4 @@
-import { Header } from "../header/Header";
+
 import { Flex, Button, Grid } from "@radix-ui/themes";
 import brush from "@/app/assets/brush2.png";
 import { HeroBoxes } from "./heroBoxes/HeroBoxes";
@@ -11,7 +11,6 @@ export function Hero() {
 
   return (
     <section className="">
-      <Header />
       <div className="flex justify-center items-center mx-4 mb: my-6">
         <div className="w-[1024px]">
           <Grid columns={{ initial: "1", md: "2" }} gap="3" rows="1" width="full">
